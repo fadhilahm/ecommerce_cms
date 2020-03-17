@@ -1,0 +1,22 @@
+{
+  "name": "ecommerce_cms",
+  "version": "1.0.0",
+  "description": "ECommerce-CMS Hacktiv8 Phase 2 Week 3 Portofolio",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fadhilahm/ecommerce_cms.git"
+  },
+  "keywords": [
+    "vue-cli"
+  ],
+  "author": "fadhilahm",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fadhilahm/ecommerce_cms/issues"
+  },
+  "homepage": "https://github.com/fadhilahm/ecommerce_cms#readme"
+}
