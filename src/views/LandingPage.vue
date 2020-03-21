@@ -37,6 +37,20 @@ import LandingRegister from "@/components/LandingRegister";
 import LandingLogin from "@/components/LandingLogin";
 import Loading from "@/components/Loading";
 import axios from "axios";
+import Swal from "sweetalert2";
+
+const Toast = Swal.mixin({
+  toast: true,
+  position: "top-end",
+  showConfirmButton: false,
+  timer: 3000,
+  timerProgressBar: true,
+  onOpen: toast => {
+    toast.addEventListener("mouseenter", Swal.stopTimer);
+    toast.addEventListener("mouseleave", Swal.resumeTimer);
+  }
+});
+
 export default {
   name: "LandingPage",
   components: {
@@ -59,7 +73,7 @@ export default {
     registerUser(data) {
       this.$store.commit("SET_LOADING", true);
       let { email, password, username } = data;
-      this.$;
+      this.$store.commit("SET_LOADING", true);
       axios({
         method: "POST",
         url: "http://localhost:3000/register",
@@ -75,8 +89,13 @@ export default {
             password
           });
         })
-        .catch(err => {
-          console.log(err.response);
+        .catch(({ response }) => {
+          response.data.msg.forEach(el => {
+            Toast.fire({
+              icon: "error",
+              title: el
+            });
+          });
         })
         .finally(() => {
           this.$store.commit("SET_LOADING", false);
@@ -102,10 +121,17 @@ export default {
             role: data.data.role
           });
           this.$store.commit("SET_IS_LOGGED_IN", true);
-          this.$router.push({ name: "DashboardPage" });
+          this.$router.push({ path: "/products" });
+          Toast.fire({
+            icon: "success",
+            title: "Logged in successfully"
+          });
         })
-        .catch(err => {
-          console.log(err.response);
+        .catch(({ response }) => {
+          Toast.fire({
+            icon: "error",
+            title: response.data.msg
+          });
         })
         .finally(() => {
           this.$store.commit("SET_LOADING", false);

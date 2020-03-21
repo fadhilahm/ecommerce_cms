@@ -3,13 +3,23 @@
     <h1>New Here?</h1>
     <hr />
     <div class="form-group">
-      <input type="email" placeholder="Insert email" v-model="email" />
+      <input type="email" placeholder="Insert email" v-model="email" required />
     </div>
     <div class="form-group">
-      <input type="password" placeholder="Insert password" v-model="password" />
+      <input
+        type="password"
+        placeholder="Insert password"
+        required
+        v-model="password"
+      />
     </div>
     <div class="form-group">
-      <input type="text" placeholder="Insert username" v-model="username" />
+      <input
+        type="text"
+        placeholder="Insert username"
+        v-model="username"
+        required
+      />
     </div>
     <input type="submit" class="btn btn-primary" value="Register" />
     <hr />
