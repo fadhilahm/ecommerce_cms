@@ -70,7 +70,7 @@ export default {
       let { name, image_url, price, stock } = payload;
       axios({
         method: "POST",
-        url: "http://localhost:3000/products",
+        url: "https://dry-sea-66434.herokuapp.com/products",
         headers: {
           token: localStorage.getItem("token")
         },
@@ -110,7 +110,7 @@ export default {
     fetchData() {
       axios({
         method: "GET",
-        url: "http://localhost:3000/products",
+        url: "https://dry-sea-66434.herokuapp.com/products",
         headers: {
           token: localStorage.getItem("token")
         }
@@ -130,7 +130,7 @@ export default {
       this.$store.commit("SET_LOADING", true);
       axios({
         method: "DELETE",
-        url: `http://localhost:3000/products/${id}`,
+        url: `https://dry-sea-66434.herokuapp.com/products/${id}`,
         headers: {
           token: localStorage.getItem("token")
         }
@@ -163,7 +163,7 @@ export default {
       let { id, name, image_url, price, stock } = payload;
       axios({
         method: "PUT",
-        url: `http://localhost:3000/products/${id}`,
+        url: `https://dry-sea-66434.herokuapp.com/products/${id}`,
         headers: {
           token: localStorage.getItem("token")
         },

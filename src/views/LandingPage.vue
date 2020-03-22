@@ -76,7 +76,7 @@ export default {
       this.$store.commit("SET_LOADING", true);
       axios({
         method: "POST",
-        url: "http://localhost:3000/register",
+        url: "https://dry-sea-66434.herokuapp.com/register",
         data: {
           email,
           password,
@@ -106,7 +106,7 @@ export default {
       let { email, password } = data;
       axios({
         method: "POST",
-        url: "http://localhost:3000/login",
+        url: "https://dry-sea-66434.herokuapp.com/login",
         data: {
           email,
           password
