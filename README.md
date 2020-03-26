@@ -1,40 +1,54 @@
 # ecommerce_cms
 
 ## Project setup
+
 ```
 npm install
 ```
 
 ### Compiles and hot-reloads for development
+
 ```
 npm run serve
 ```
 
 ### Compiles and minifies for production
+
 ```
 npm run build
 ```
 
 ### Lints and fixes files
+
 ```
 npm run lint
 ```
 
 ### Customize configuration
+
 See [Configuration Reference](https://cli.vuejs.org/config/).
 
-## Firebase deployment
+## Deployment
 
-### Base URL
+- Heroku (server) : https://tcg-ecommerce-cms.herokuapp.com
+- Firebase (CMS client) : https://tcg-ecommerce-cms.firebaseapp.com
+- Firebase (Customer client) : https://tcg-ecommerce.firebaseapp.com
 
-https://tcg-ecommerce-cms.firebaseapp.com/
+## APIARY documentation
 
-because nothing existed yet on the "/" path, it will return an error. Please use "/login" routing when accessing the website
+https://ecommercecmsserver.docs.apiary.io/
 
-### Landing page
+## User Account
 
-https://tcg-ecommerce-cms.firebaseapp.com/login
+Because there's no way to create an admin in the site, use these accounts
 
-### Dashboard page
+### to test admin use :
 
-https://tcg-ecommerce-cms.firebaseapp.com/products
+- email : aaa@gmail.com
+- password : aaa
+
+### to test customer use :
+
+- email : bbb@gmail.com
+- password : bbb
+

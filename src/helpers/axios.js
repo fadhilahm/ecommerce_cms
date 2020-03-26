@@ -5,10 +5,10 @@ const hitScryfall = axios.create({
 });
 
 const hitAPI = axios.create({
-  baseURL: "http://localhost:3000"
+  baseURL: "https://tcg-ecommerce-cms.herokuapp.com"
 });
 
-// https://dry-sea-66434.herokuapp.com <--- e-commerce server
+// https://tcg-ecommerce-cms.herokuapp.com/ <--- e-commerce server
 // http://localhost:3000 <--- localhost
 
 module.exports = {
