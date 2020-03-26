@@ -5,6 +5,7 @@ import DashboardPage from "@/views/DashboardPage";
 import store from "../store";
 import ProductList from "../components/ProductList";
 import ProductAdd from "@/components/ProductAdd";
+import ProductMagicTCG from "../components/ProductMagicTCG";
 
 Vue.use(VueRouter);
 
@@ -23,7 +24,7 @@ const routes = [
     name: "DashboardPage",
     component: DashboardPage,
     redirect: {
-      name : "DashboardProductList"
+      name: "DashboardProductList"
     },
     meta: {
       requiresAuth: true,
@@ -31,8 +32,8 @@ const routes = [
     },
     children: [
       {
-        path: '',
-        name : "DashboardProductList",
+        path: "",
+        name: "DashboardProductList",
         component: ProductList,
         meta: {
           requiresAuth: true,
@@ -40,15 +41,30 @@ const routes = [
         }
       },
       {
-        path : "add",
-        name : "DashboardAddProduct",
-        component : ProductAdd,
-        meta : {
-          requiresAuth : true,
-          title : "TCG CMS - Add a Product"
+        path: "add",
+        name: "DashboardAddProduct",
+        component: ProductAdd,
+        meta: {
+          requiresAuth: true,
+          title: "TCG CMS - Add a Product"
+        }
+      },
+      {
+        path: "magicTCG",
+        name: "DashboardMagicTCG",
+        component: ProductMagicTCG,
+        meta: {
+          requiresAuth: true,
+          title: "TCG CMS - Add MagicTCG Products"
         }
       }
     ]
+  },
+  {
+    path : "*",
+    meta : {
+      requiresAuth : true
+    }
   }
 ];
 

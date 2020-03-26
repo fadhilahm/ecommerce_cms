@@ -1,12 +1,8 @@
 <template>
   <div>
     <NavBar></NavBar>
-    <div class="mt-3">
-      <h4>Welcome back {{ this.$store.state.user.username }} !</h4>
-      <hr />
-    </div>
-    <div class="container-fluid" id="base">
-      <div class="row d-flex align-items-start" style="height : 80vh;">
+    <div class="container-fluid mt-4" id="base">
+      <div class="row d-flex align-items-start" style="height : 90vh;">
         <div class="col-2 pt-4" id="left-side">
           <div class="list-group">
             <router-link
@@ -19,7 +15,13 @@
               to="/products/add"
               class="list-group-item list-group-item-action"
             >
-              Add a Product
+              Add a custom Product
+            </router-link>
+            <router-link
+              to="/products/magicTCG"
+              class="list-group-item list-group-item-action"
+            >
+              Add Magic TCG Products
             </router-link>
           </div>
         </div>
@@ -39,12 +41,12 @@
 
 <script>
 import NavBar from "../components/NavBar";
-import axios from "axios";
+import { hitAPI } from "../helpers/axios";
 import Swal from "sweetalert2";
 
 const Toast = Swal.mixin({
   toast: true,
-  position: "top-end",
+  position: "bottom-end",
   showConfirmButton: false,
   timer: 3000,
   timerProgressBar: true,
@@ -68,19 +70,21 @@ export default {
     addProduct(payload) {
       this.$store.commit("SET_LOADING", true);
       let { name, image_url, price, stock } = payload;
-      axios({
-        method: "POST",
-        url: "https://dry-sea-66434.herokuapp.com/products",
-        headers: {
-          token: localStorage.getItem("token")
-        },
-        data: {
-          name,
-          image_url,
-          price,
-          stock
-        }
-      })
+      hitAPI
+        .post(
+          "/products",
+          {
+            name,
+            image_url,
+            price,
+            stock
+          },
+          {
+            headers: {
+              token: localStorage.getItem("token")
+            }
+          }
+        )
         .then(({ data }) => {
           Toast.fire({
             icon: "success",
@@ -108,13 +112,12 @@ export default {
         });
     },
     fetchData() {
-      axios({
-        method: "GET",
-        url: "https://dry-sea-66434.herokuapp.com/products",
-        headers: {
-          token: localStorage.getItem("token")
-        }
-      })
+      hitAPI
+        .get("/products", {
+          headers: {
+            token: localStorage.getItem("token")
+          }
+        })
         .then(({ data }) => {
           this.productList = data.data;
         })
@@ -128,15 +131,18 @@ export default {
     deleteProduct(payload) {
       let { id } = payload;
       this.$store.commit("SET_LOADING", true);
-      axios({
-        method: "DELETE",
-        url: `https://dry-sea-66434.herokuapp.com/products/${id}`,
-        headers: {
-          token: localStorage.getItem("token")
-        }
-      })
+      hitAPI
+        .delete(`/products/${id}`, {
+          headers: {
+            token: localStorage.getItem("token")
+          }
+        })
         .then(() => {
           this.fetchData();
+          Toast.fire({
+            icon: "success",
+            title: "Successfully deleted a product"
+          });
         })
         .catch(({ response }) => {
           // conditional to check for admin
@@ -161,19 +167,21 @@ export default {
     editProduct(payload) {
       this.$store.commit("SET_LOADING", true);
       let { id, name, image_url, price, stock } = payload;
-      axios({
-        method: "PUT",
-        url: `https://dry-sea-66434.herokuapp.com/products/${id}`,
-        headers: {
-          token: localStorage.getItem("token")
-        },
-        data: {
-          name,
-          image_url,
-          price,
-          stock
-        }
-      })
+      hitAPI
+        .put(
+          `/products/${id}`,
+          {
+            name,
+            image_url,
+            price,
+            stock
+          },
+          {
+            headers: {
+              token: localStorage.getItem("token")
+            }
+          }
+        )
         .then(({ data }) => {
           Toast.fire({
             icon: "success",
@@ -228,5 +236,11 @@ export default {
 #base {
   padding-left: 50px;
   padding-right: 50px;
+}
+
+.router-link-exact-active {
+  font-weight: 900;
+  border: solid black 5px;
+  font-size: 24px;
 }
 </style>

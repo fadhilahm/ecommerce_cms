@@ -1,7 +1,7 @@
 <template>
   <div class="d-flex justify-content-center">
     <lottie-player
-      src="https://assets1.lottiefiles.com/packages/lf20_Ic1eNf.json"
+      src="https://assets9.lottiefiles.com/packages/lf20_4gycw9.json"
       background="transparent"
       speed="1"
       style="width: 300px; height: 300px;"

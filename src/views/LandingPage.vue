@@ -36,12 +36,12 @@
 import LandingRegister from "@/components/LandingRegister";
 import LandingLogin from "@/components/LandingLogin";
 import Loading from "@/components/Loading";
-import axios from "axios";
 import Swal from "sweetalert2";
+import { hitAPI } from "../helpers/axios";
 
 const Toast = Swal.mixin({
   toast: true,
-  position: "top-end",
+  position: "bottom-end",
   showConfirmButton: false,
   timer: 3000,
   timerProgressBar: true,
@@ -74,15 +74,12 @@ export default {
       this.$store.commit("SET_LOADING", true);
       let { email, password, username } = data;
       this.$store.commit("SET_LOADING", true);
-      axios({
-        method: "POST",
-        url: "https://dry-sea-66434.herokuapp.com/register",
-        data: {
+      hitAPI
+        .post("/register", {
           email,
           password,
           username
-        }
-      })
+        })
         .then(() => {
           this.loginUser({
             email,
@@ -104,14 +101,11 @@ export default {
     loginUser(data) {
       this.$store.commit("SET_LOADING", true);
       let { email, password } = data;
-      axios({
-        method: "POST",
-        url: "https://dry-sea-66434.herokuapp.com/login",
-        data: {
+      hitAPI
+        .post("/login", {
           email,
           password
-        }
-      })
+        })
         .then(({ data }) => {
           localStorage.setItem("token", data.data.token);
           this.$store.commit("SET_USER", {
