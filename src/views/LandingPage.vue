@@ -4,10 +4,26 @@
       <div id="left">
         <div
           id="left-masking"
-          class="d-flex justify-content-center align-items-center"
+          class="d-flex justify-content-center align-items-center flex-column"
         >
-          <div id="left-board">
-            <h1>Welcome to TCG CMS</h1>
+          <h1>TCG Content Management Service</h1>
+          <h4>Your one stop destination for managing all things card games</h4>
+          <p>
+            Join one of the most helpful web app for your stores. Enjoy these
+            awesome features:
+          </p>
+          <div class="text-left px-5 mx-5">
+            <ul>
+              <li>
+                Tired of incomplete data? Our CMS storage is already directly
+                connected with Scryfall API, one of the best database for every
+                kinds of cardgames
+              </li>
+              <li>
+                Can't keep track of what's in your store? We made an easy to use
+                interface so that you can manage your items more easily
+              </li>
+            </ul>
           </div>
         </div>
       </div>
@@ -16,6 +32,14 @@
           <Loading></Loading>
         </div>
         <div v-else>
+          <h2>Welcome TCG Store Owners</h2>
+          <div>
+            <img
+              src="../assets/playcard.png"
+              alt="landing-image"
+              class="img-fluid"
+            />
+          </div>
           <LandingRegister
             v-if="isRegistering"
             @change-to-login="changeToLogin"
@@ -154,6 +178,7 @@ export default {
   background-color: rgba(0, 0, 0, 0.5);
   width: 100%;
   height: 100%;
+  color: white;
 }
 
 #right {

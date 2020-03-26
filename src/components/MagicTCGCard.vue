@@ -59,7 +59,7 @@ export default {
   props: ["data"],
   computed: {
     cardPrice() {
-      if (this.data.prices.usd) {
+      if (this.data.prices.usd && this.data.prices.usd >= 1) {
         return this.data.prices.usd;
       } else {
         return 1;

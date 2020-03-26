@@ -9,6 +9,7 @@ const hitAPI = axios.create({
 });
 
 // https://dry-sea-66434.herokuapp.com <--- e-commerce server
+// http://localhost:3000 <--- localhost
 
 module.exports = {
   hitScryfall,

@@ -21,7 +21,7 @@
         required
       />
     </div>
-    <input type="submit" class="btn btn-primary" value="Register" />
+    <input type="submit" class="btn btn-success" value="Register" />
     <hr />
     <a href="javascript:;" @click="changeToLogin">Already have an account?</a>
   </form>
